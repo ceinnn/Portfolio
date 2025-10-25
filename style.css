@@ -25,6 +25,14 @@ body {
     radial-gradient(circle, #0000002c 1px, transparent 1px);
   background-position: 0 0, 20px 20px;
   background-size: 10px 10px;
+  position: sticky;
+  top: 0;
+  background-color: #1e201e;
+  z-index: 3;
+}
+
+section {
+  scroll-margin-top: 68px;
 }
 
 .nav-content {
@@ -428,7 +436,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 520px;
+  height: 690px;
   overflow: hidden;
 }
 

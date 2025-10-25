@@ -1,9 +1,24 @@
-const menu = document.querySelector(".menu");
-const navLinks = document.querySelector(".nav-links");
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links li");
 
-menu.addEventListener("click", () => {
-  menu.classList.toggle("active");
-  navLinks.classList.toggle("active");
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= sectionTop - sectionHeight / 3) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((li) => {
+    li.classList.remove("active");
+    const a = li.querySelector("a");
+    if (a.getAttribute("href") === `#${current}`) {
+      li.classList.add("active");
+    }
+  });
 });
 
 const roleTxt = "Web Developer";
@@ -46,7 +61,7 @@ function showSlide(index) {
 let interval = setInterval(() => {
   let nextIndex = (currentIndex + 1) % projectsCards.length;
   showSlide(nextIndex);
-}, 5000);
+}, 3500);
 
 dash.forEach((dot, index) => {
   dot.addEventListener("click", () => {
@@ -56,7 +71,7 @@ dash.forEach((dot, index) => {
     interval = setInterval(() => {
       let nextIndex = (currentIndex + 1) % projectsCards.length;
       showSlide(nextIndex);
-    }, 5000);
+    }, 3500);
   });
 });
 
@@ -68,7 +83,7 @@ projectsCards.forEach((card) => {
     interval = setInterval(() => {
       let nextIndex = (currentIndex + 1) % projectsCards.length;
       showSlide(nextIndex);
-    }, 5000);
+    }, 3500);
   });
 
   card.addEventListener("click", () => {
@@ -79,10 +94,6 @@ projectsCards.forEach((card) => {
     interval = setInterval(() => {
       let nextIndex = (currentIndex + 1) % projectsCards.length;
       showSlide(nextIndex);
-    }, 5000);
+    }, 3500);
   });
 });
-
-function toProjects() {
-  window.location.href = "#projects";
-}
